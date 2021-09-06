@@ -36,7 +36,9 @@ namespace RequestRabbitMQ
             //4.Publish message
             var properties = model.CreateBasicProperties();
             properties.Persistent = false;
-            byte[] messageBuffer = Encoding.Default.GetBytes("Direct message ...");
+            Console.WriteLine("Please enter your message here");
+            var message = Console.ReadLine();
+            byte[] messageBuffer = Encoding.Default.GetBytes(message);
             model.BasicPublish("demoExchange", "dirextexchange_key", properties, messageBuffer);
             Console.WriteLine("Message sent");
 
